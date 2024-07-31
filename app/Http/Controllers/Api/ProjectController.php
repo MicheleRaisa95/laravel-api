@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
@@ -10,7 +9,12 @@ class ProjectController extends Controller
 {
     public function index()
     {
-        $projects = Project::all();
+        $projects = Project::paginate(10); 
         return response()->json($projects);
+    }
+
+    public function show(Project $project)
+    {
+        return response()->json($project);
     }
 }
